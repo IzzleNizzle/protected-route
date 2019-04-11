@@ -21,12 +21,10 @@ class Auth {
       });
   }
 
-
   logIn(cred, cb) {
     axios.post('https://altamir-generator-api.herokuapp.com/auth/login', cred)
       .then((response) => {
         console.log("login success");
-        console.log(response);
         this.token = response.data.token;
         this.authenticated = true;
         this.timeStamp = this.returnTimeStamp(response.data.token)
@@ -39,6 +37,17 @@ class Auth {
       });
   }
 
+  // For this particular API, tokens expire after 7 days. 
+  // Check to see if we are within 1 day of token expiring. If so, renew token
+  checkRefresh() {
+    if (this.timeStamp.getDate() === new Date().getDate()) {
+      this.refreshToken()
+    }
+    else {
+      console.log("Token is valid still, no need to refresh");
+    }
+  }
+
   refreshToken() {
     axios.post('https://altamir-generator-api.herokuapp.com/auth/refresh', {},
       {
@@ -48,7 +57,9 @@ class Auth {
       })
       .then((response) => {
         console.log("refresh success");
-        console.log(response);
+        this.token = response.data.token;
+        this.authenticated = true;
+        this.timeStamp = this.returnTimeStamp(response.data.token)
       })
       .catch((error) => {
         this.authenticated = false;
