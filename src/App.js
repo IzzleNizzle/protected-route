@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import ProtectedRoute from './ProtectedRoute'
+import ProtectedRoute from './components/ProtectedRoute'
 import LogIn from "./pages/LogIn"
 import Home from "./pages/Home"
 

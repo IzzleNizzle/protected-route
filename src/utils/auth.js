@@ -1,6 +1,7 @@
 import axios from 'axios'
 import jwtDecode from 'jwt-decode';
 
+
 class Auth {
   constructor() {
     this.authenticated = false;

@@ -1,8 +1,8 @@
 import React from "react";
 import auth from "../../utils/auth"
 
-export default function Home() {
 
+export default function Home() {
   // Refresh token every 5 seconds
   setInterval(() => {
     console.log('refresh')
