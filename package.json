@@ -1,7 +1,7 @@
 {
   "name": "altamir-react-app",
   "version": "0.1.0",
-  "homepage": "https://izzlenizzle.github.io/protected-route/",
+  "homepage": "https://izzlenizzle.github.io/protected-route",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
